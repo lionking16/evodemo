@@ -15,8 +15,13 @@ public class EmployeeOps {
         this.employees = employees;
     }
 
-    public int getTotalEmployees(){
-        return employees.size();
+    public int getTotalEmployees() throws UnsupportedOperationException{
+        if (employees.size() > 0) {
+            return employees.size();
+        }
+        else {
+            throw new UnsupportedOperationException("No data");
+        }
     }
 
     public List<Employee> getEmployees() {
@@ -27,7 +32,7 @@ public class EmployeeOps {
         this.employees = employees;
     }
 
-    public int getTotalEmployees(List<Employee> employees) {
+    public int getTotalEmployees(List<Employee> employees) throws UnsupportedOperationException{
         this.setEmployees(employees);
         return getTotalEmployees();
     }
