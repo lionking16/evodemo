@@ -30,14 +30,19 @@
 
 4. To create unit test cases for one class file
 
-   		docker run -it -u ${UID} -v ${PWD}:/evosuite evosuite/evosuite:latest-java-8 -target target/classes -class com.accionlabs.simplelogic.Arithmatic
+   		docker run --name evodemo -it -u ${UID} -v ${PWD}:/evosuite evosuite/evosuite:latest-java-8 -target target/classes  -class com.accionlabs.simplelogic.Arithmatic
 
 5. To create unit test cases for one class file using criterion option
 
-		docker run -it -u ${UID} -v ${PWD}/evodemo:/evosuite evosuite/evosuite:latest-java-8 -target com.accionlabs.db -criterion branch
+		docker run --name evodemo -it -u ${UID} -v ${PWD}:/evosuite evosuite/evosuite:latest-java-8 -target com.accionlabs.db -criterion branch
 
 > Instead of Using ${PWD} in all the above docker commands, the engineer can replace it with either absolute or relative path 
 
-> e.g., docker run -it -u ${UID} -v ~/your/local/path/to/code/evodemo:/evosuite evosuite/evosuite:latest-java-8 -target com.accionlabs.db -criterion branch
+> e.g., docker run --name evodemo -u ${UID} -v ~/your/local/path/to/code/evodemo:/evosuite evosuite/evosuite:latest-java-8 -target com.accionlabs.db -criterion branch
 
-6. Copy the generated test cases into your junit test folder into appropriate location
+6. To generate unit test cases for classes under a package/subpackage 
+	
+		docker run --name evodemo -it -u ${UID} -v ~/your/local/path/to/code/evodemo:/evosuite evosuite/evosuite:latest-java-8 -target target/classes -prefix com.accionlabs.evodemo.customobject  -criterion branch
+
+7. Copy the generated test cases into your junit test folder into appropriate location
+

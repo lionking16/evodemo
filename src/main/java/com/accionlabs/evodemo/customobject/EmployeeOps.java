@@ -16,7 +16,7 @@ public class EmployeeOps {
     }
 
     public int getTotalEmployees() throws UnsupportedOperationException{
-        if (employees.size() > 0) {
+        if (null != employees && employees.size() > 0) {
             return employees.size();
         }
         else {
@@ -35,5 +35,15 @@ public class EmployeeOps {
     public int getTotalEmployees(List<Employee> employees) throws UnsupportedOperationException{
         this.setEmployees(employees);
         return getTotalEmployees();
+    }
+
+    public void addEmployee(Employee employee) {
+        if(null != employees) {
+            employees.add(employee);
+        }
+        else {
+            employees = new LinkedList<>();
+            employees.add(employee);
+        }
     }
 }
